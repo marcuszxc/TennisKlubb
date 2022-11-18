@@ -1,0 +1,94 @@
+<head>
+  <style>
+    input[type="text"],
+    input[type="email"],
+    input[type="tel"],
+    select {
+      width: 100%;
+      padding: 12px 20px;
+      margin: 8px 0;
+      display: inline-block;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+    }
+
+    button[type="submit"] {
+      width: 100%;
+      background-color: #4caf50;
+      color: white;
+      padding: 14px 20px;
+      margin: 8px 0;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    button[type="submit"]:hover {
+      background-color: #45a049;
+    }
+
+    div {
+      border-radius: 5px;
+      background-color: #f2f2f2;
+      padding: 20px;
+    }
+  </style>
+  
+</head>
+<form id="form">
+  <div class="form-group">
+    <label for="Name">Namn</label>
+    <input name="namn" type="text" class="form-control" id="namnInput" placeholder="John" required />
+  </div>
+  <div class="form-group">
+    <label for="Lastname">Efternamn</label>
+    <input name="efternamn" type="text" class="form-control" id="formGroupExampleInput" placeholder="Doe" required />
+  </div>
+  <div class="form-group">
+    <label for="formGroupExampleInput2">Telefonnummer</label>
+    <input name="telefonnummer" type="tel" class="form-control" id="formGroupExampleInput2" placeholder="0701234567" pattern="07[0-9]{8}|07[0-9]-[0-9]{7}" required />
+  </div>
+  <div class="form-group">
+    <label for="exampleInputEmail1">E-postadress</label>
+    <input name="e-postadress" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="tennis@banna.se" required/>
+    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+  </div>
+  <div class="form-group">
+    <label for="formGroupExampleInput">Hur många timmar vill du boka?</label>
+    <input name="timmar" type="number" class="form-control" id="formGroupExampleInput" min="1" max="10" required/>
+    <label for="formGroupExampleInput">(1 - 10) timmar</label>
+  </div>
+  <button type="submit" class="btn btn-primary" onclick="StoreForm()">Submit</button>
+</form>
+
+<script>
+
+  const form = document.querySelector("#form")
+
+  form.addEventListener("submit", function (event) {
+    // stop form submission
+    event.preventDefault();
+
+    localStorage.setItem("num",Number(localStorage.getItem("num")) + 1)
+
+    var num = localStorage.getItem("num")
+
+    localStorage.setItem(`namn${num}`,form.elements["namn"].value)
+    localStorage.setItem(`efternamn${num}`,form.elements["efternamn"].value)
+    localStorage.setItem(`telefonnummer${num}`,form.elements["telefonnummer"].value)
+    localStorage.setItem(`e-postadress${num}`,form.elements["e-postadress"].value)
+    localStorage.setItem(`timmar${num}`,form.elements["timmar"].value)
+    
+    if (localStorage.getItem(`namn${num}`) != "" && localStorage.getItem(`efternamn${num}`) != "" && localStorage.getItem(`telefonnummer${num}`) != "" && localStorage.getItem(`e-postadress${num}`) != "" && localStorage.getItem(`timmar${num}`) != "") 
+    {
+      window.close()
+    }
+    else 
+    {
+      alert("Var snäll och fyll i formularet igen.")
+    }
+    
+
+    });
+</script>

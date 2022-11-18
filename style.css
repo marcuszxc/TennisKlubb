@@ -1,0 +1,77 @@
+body {
+  margin: 0;
+  background-image: url("https://en.reformsports.com/oxegrebi/2019/06/tenis-kortu-cesitleri-nelerdir-zeminlerine-gore-kortlar.jpg");
+  background-size: cover;
+}
+header {
+  background-color: #282a35;
+  height: 10vh;
+  display: flex;
+  justify-content: space-around;
+  opacity: 80%;
+}
+main {
+  height: 90vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+iframe {
+  height: 70vh;
+  width: 80vw;
+  position: absolute;
+}
+
+a {
+  opacity: 100%;
+  color: aliceblue;
+  text-decoration: none;
+  overflow-wrap: break-word;
+  text-align: center;
+  width: auto;
+  font-size: 2vw;
+  margin: auto;
+  padding-top: 1vh;
+  padding-bottom: 1vh;
+}
+a:hover {
+  color: lightgrey;
+}
+#screenButton {
+  margin: 0;
+  padding: 0;
+  color: black;
+  font-size: 150%;
+  position: relative;
+  left: 37%;
+  bottom: 35%;
+  z-index: 3;
+  text-shadow: 1px 0px white;
+}
+#screenButton:hover {
+  transform: scale(1.3);
+  animation: screenbutton 1s;
+}
+
+@media (min-width: 280px) and (max-width: 980px)
+{
+
+  #screenButton 
+  {
+    left: 35%;
+    bottom: 41%;
+  }
+
+  a 
+  {
+    font-size: 4vw;
+  }
+
+  iframe 
+  {
+    top: 15vh;
+    height: 55vh;
+  }
+
+}

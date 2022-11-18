@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="kalenderScript.js"></script>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+
+<h1>CSS Calendar</h1>
+
+<div class="month">      
+  <ul>
+    <li class="prev"><a href="#" onclick="GetDateAndTime('-')">&#10094;</a></li>
+    <li class="next"><a href="#" onclick="GetDateAndTime('+')">&#10095;</a></li>
+    <li></li>
+  </ul>
+</div>
+
+<ul class="weekdays">
+  <!--<li>Mo</li>
+  <li>Tu</li>
+  <li>We</li>
+  <li>Th</li>
+  <li>Fr</li>
+  <li>Sa</li>
+  <li>Su</li>-->
+</ul>
+
+<ul class="days">  
+  <li></li>
+  <li></li>
+  <li></li>
+  <li></li>
+  <li></li>
+  <li></li>
+  <li></li>
+  <li></li>
+  <li></li>
+  <li></li>
+  <li></li>
+  <li></li>
+  <li></li>
+  <li></li>
+  <li></li>
+  <li></li>
+  <li></li>
+  <li></li>
+  <li></li>
+  <li></li>
+  <li></li>
+  <li></li>
+  <li></li>
+  <li></li>
+  <li></li>
+  <li></li>
+  <li></li>
+  <li></li>
+  <li></li>
+  <li></li>
+  <li></li>
+</ul>
+
+<div >
+  <h4>Dina Bokningar:</h4>
+  <ul class="Bokningar">
+  </ul>
+</div>
+
+<script>
+  GetDateAndTime();
+  AddATags();
+  Test();
+</script>
+</body>
+</html>
