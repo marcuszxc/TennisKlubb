@@ -80,6 +80,30 @@ a
   color: white !important
 }
 
+.bookings li
+{
+  position: relative;
+  width: fit-content;
+}
+
+.bookings a 
+{
+  position: absolute;
+  top: 0;
+  right: 0;
+  color: transparent;
+  text-shadow: 0 0 0 black;
+  font-size: small;
+  transition: background-color 1s;
+}
+
+.bookings a:hover 
+{
+  background-color:#ddd;
+}
+
+
+
 /* Add media queries for smaller screens */
 @media screen and (max-width:720px) {
   .weekdays li, .days li {width: 13.1%;}

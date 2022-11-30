@@ -17,6 +17,27 @@ main {
   align-items: center;
 }
 
+h1, h2
+{
+  color: aliceblue;
+  text-shadow: 5px 3px black;
+}
+
+h2 
+{
+  font-size: 40px;
+}
+
+#titel 
+{
+  font-size: 70px;
+}
+
+div
+{
+  text-align: center;
+}
+
 iframe {
   height: 70vh;
   width: 80vw;
@@ -39,6 +60,7 @@ a:hover {
   color: lightgrey;
 }
 #screenButton {
+  display: none;
   margin: 0;
   padding: 0;
   color: black;
@@ -59,8 +81,9 @@ a:hover {
 
   #screenButton 
   {
-    left: 35%;
-    bottom: 41%;
+    position: relative;
+    left: 45%;
+    bottom: 45%;
   }
 
   a 
@@ -70,8 +93,9 @@ a:hover {
 
   iframe 
   {
-    top: 15vh;
-    height: 55vh;
+    margin: 0;
+    height: calc(100% - 10vh);
+    width: 100%;
   }
 
 }

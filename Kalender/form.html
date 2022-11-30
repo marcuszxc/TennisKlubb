@@ -70,6 +70,8 @@
     // stop form submission
     event.preventDefault();
 
+    localStorage.setItem("closeCheck",true)
+
     localStorage.setItem("num",Number(localStorage.getItem("num")) + 1)
 
     var num = localStorage.getItem("num")

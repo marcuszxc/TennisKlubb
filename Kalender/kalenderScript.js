@@ -4,38 +4,54 @@ const month= ["January","February","March","April","May","June","July","August",
 var monthDisplay = month[date.getMonth()]
 var yearDisplay = date.getFullYear()
 
-function Test() {
+function Bookings() {
+
+    document.getElementsByClassName("bookings")[0].innerHTML = "";
+
     for (let num = 1; num <= Number(localStorage.getItem("num"));num++) {
         
-        let msg = `${localStorage.getItem(`namn${num}`)} ${localStorage.getItem(`efternamn${num}`)} ${localStorage.getItem(`telefonnummer${num}`)} ${localStorage.getItem(`e-postadress${num}`)} ${localStorage.getItem(`timmar${num}`)}`
-        document.getElementsByClassName("Bokningar")[0].appendChild(document.createElement("li"))
-        document.getElementsByClassName("Bokningar")[0].children[document.getElementsByClassName("Bokningar")[0].children.length - 1].innerText = msg
+        let bookDate = new Date(localStorage.getItem(`Date${num}`))
+        let msg = `Namn: ${localStorage.getItem(`namn${num}`)}\nEfternamn: ${localStorage.getItem(`efternamn${num}`)}\nTelefonnummer: ${localStorage.getItem(`telefonnummer${num}`)}\nE-postaddress: ${localStorage.getItem(`e-postadress${num}`)}\nBokade timmar: ${localStorage.getItem(`timmar${num}`)}\nDatum: ${parseInt(localStorage.getItem(`DateNumber${num}`)) + 1}-${month[bookDate.getMonth()]}-${bookDate.getFullYear()}\n\n`
+        let li = document.createElement("li")
+        let a = document.createElement("a")
+        li.classList.add("bookings")
+        a.setAttribute("href","#")
+        a.setAttribute("onclick",`RemoveBooking(${num})`)
+        a.innerText = "❌"
+        document.getElementsByClassName("bookings")[0].appendChild(li)
+        li.innerText = msg
+        li.appendChild(a)
+
+        if (localStorage.getItem(`Date${num}`) == new Date(date.getFullYear(), date.getMonth())) {
+
+        document.getElementsByClassName("date")[localStorage.getItem(`DateNumber${num}`)].classList.add("active")
+        document.getElementsByClassName("date")[localStorage.getItem(`DateNumber${num}`)].style.pointerEvents = "none"
+        }
     }
 }
 
-function AddBoking(number) 
+function AddBookings(number) 
 {
 
     if (confirm(`Vill du boka den ${number + 1} ${monthDisplay} ${yearDisplay}?`) === true) 
     {
-        var test = window.open("form.html","", "width=700, height=600")
+        var form = window.open("form.html","", "width=700, height=600")
         //test.onbeforeunload = WindowClose();
-        var timer = setInterval(function() { if(test.closed) { clearInterval(timer); WindowClose(); } }, 1000);
+        var timer = setInterval(function() { if(form.closed) { clearInterval(timer); WindowClose(); } }, 1000);
     }
 
     function WindowClose() 
     {
 
-        let num = localStorage.getItem("num")
+        if (localStorage.getItem("closeCheck") == "true") {
 
-        var msg = `${localStorage.getItem(`namn${num}`)} ${localStorage.getItem(`efternamn${num}`)} ${localStorage.getItem(`telefonnummer${num}`)} ${localStorage.getItem(`e-postadress${num}`)} ${localStorage.getItem(`timmar${num}`)}`
+        localStorage.setItem("closeCheck",false)
+        localStorage.setItem(`Date${localStorage.getItem("num")}`,new Date(date.getFullYear(), date.getMonth()))
+        localStorage.setItem(`DateNumber${localStorage.getItem("num")}`,number)
+      
+        Bookings()
+        }
 
-        document.getElementsByClassName("Bokningar")[0].appendChild(document.createElement("li"))
-        document.getElementsByClassName("Bokningar")[0].children[document.getElementsByClassName("Bokningar")[0].children.length - 1].innerText = msg
-        //document.getElementsByClassName("Bokningar")[0].children[document.getElementsByClassName("Bokningar")[0].children.length - 1].innerText = `${number + 1} ${monthDisplay} ${yearDisplay}`
-        document.getElementsByClassName("date")[number].classList.add("active")
-        document.getElementsByClassName("date")[number].style.pointerEvents = "none"
-        
     }
 
 }
@@ -85,6 +101,7 @@ function GetDateAndTime(button="")
     monthDisplay = month[date.getMonth()]
     yearDisplay = date.getFullYear()
     AddWeekdays()
+    Bookings()
 
     document.getElementsByClassName("month")[0].children[0].children[2].innerHTML = `${monthDisplay}<br><span style="font-size:18px">${yearDisplay}</span>`
 }
@@ -103,7 +120,7 @@ function AddATags()
     {
         document.getElementsByClassName("date")[y].innerText = y + 1 
         document.getElementsByClassName("date")[y].setAttribute("href","#")
-        document.getElementsByClassName("date")[y].setAttribute("onclick",`AddBoking(${y})`)
+        document.getElementsByClassName("date")[y].setAttribute("onclick",`AddBookings(${y})`)
         
     }
 }
@@ -140,5 +157,35 @@ function AddWeekdays()
         document.getElementsByClassName("weekdays")[0].appendChild(document.createTextNode("\n"))
         li.innerText = fixWeekdays[x]
     }
+
+}
+
+function RemoveBooking(funcNum) 
+{
+
+    if(confirm("Är du säker på att du vill ta bort den här bokningen?")) 
+    {
+
+    document.getElementsByClassName("bookings").item("").children[funcNum - 1].remove()
+
+
+    for (x = funcNum; x <= localStorage.getItem("num"); x++) 
+    {
+        localStorage.setItem(`Date${x}`,localStorage.getItem(`Date${x + 1}`))
+        localStorage.setItem(`DateNumber${x}`,localStorage.getItem(`DateNumber${x + 1}`))
+        localStorage.setItem(`e-postadress${x}`,localStorage.getItem(`e-postadress${x + 1}`))
+        localStorage.setItem(`efternamn${x}`,localStorage.getItem(`efternamn${x + 1}`))
+        localStorage.setItem(`namn${x}`,localStorage.getItem(`namn${x + 1}`))
+        localStorage.setItem(`telefonnummer${x}`,localStorage.getItem(`telefonnummer${x + 1}`))
+        localStorage.setItem(`timmar${x}`,localStorage.getItem(`timmar${x + 1}`))
+    } 
+    
+    localStorage.setItem("num",(parseInt(localStorage.getItem("num")) - 1))
+
+    
+RemoveATags()
+AddATags()
+Bookings()
+}
 
 }
