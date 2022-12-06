@@ -36,7 +36,6 @@ function AddBookings(number)
     if (confirm(`Vill du boka den ${number + 1} ${monthDisplay} ${yearDisplay}?`) === true) 
     {
         var form = window.open("form.html","", "width=700, height=600")
-        //test.onbeforeunload = WindowClose();
         var timer = setInterval(function() { if(form.closed) { clearInterval(timer); WindowClose(); } }, 1000);
     }
 
@@ -48,7 +47,6 @@ function AddBookings(number)
         localStorage.setItem("closeCheck",false)
         localStorage.setItem(`Date${localStorage.getItem("num")}`,new Date(date.getFullYear(), date.getMonth()))
         localStorage.setItem(`DateNumber${localStorage.getItem("num")}`,number)
-      
         Bookings()
         }
 
@@ -91,12 +89,6 @@ function GetDateAndTime(button="")
        RemoveATags()
        AddATags()
     }
-    else if (button === "r") 
-    {
-        date = new Date()
-        RemoveATags()
-        AddATags()
-    }   
     
     monthDisplay = month[date.getMonth()]
     yearDisplay = date.getFullYear()
@@ -147,6 +139,7 @@ function AddWeekdays()
 
     firstWeekday = new Date(date.getFullYear(),date.getMonth(),1).getDay()
 
+    /*Figures out the order the weekdays should be shown*/
     fixWeekdays = weekdays.slice(firstWeekday).concat(weekdays.reverse().slice(7 - firstWeekday).reverse());
     weekdays.reverse();
 

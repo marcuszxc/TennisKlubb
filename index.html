@@ -1,25 +1,27 @@
 <!DOCTYPE html>
-
+<html lang="sv"></html>
 <head>
+    <title>Tennisklubben</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="javaScript.js"></script>
     <link rel="stylesheet" href="style.css"> 
 </head>
 
-<body>
+<body title="Tennisplan">
     <header>
-        <a href="#" onclick="Test('Hem')">Hem</a>
-        <a href="#" onclick="Test('Kalender')">Kalender</a>
-        <a href="#" onclick="Test('Info')">Info</a>
-        <a href="#" onclick="Test('Omklädningsrum')">Omklädningsrum</a>
-        <a href="#" onclick="Test('Bastu')">Bastu</a>
+        <a href="#" onclick="IframeSwitch('Hem')">Hem</a>
+        <a href="#" onclick="IframeSwitch('Kalender')">Kalender</a>
+        <a href="#" onclick="IframeSwitch('Info')">Info</a>
+        <a href="#" onclick="IframeSwitch('Omklädningsrum')">Omklädningsrum</a>
+        <a href="#" onclick="IframeSwitch('Bastu')">Bastu</a>
     </header>
 
     <main>
         <div>
             <h1 id="titel">Välkomen till Tennisklubben</h1>    
-            <h2>Clicka på någon av länkarna åvan</h2>
+            <h1>Clicka på någon av länkarna åvan</h1>
         </div>
-        <iframe src="" frameborder="0"></iframe>
+        <iframe src="" frameborder="0" title="exsplorer"></iframe>
         <a href="#" id="screenButton" onclick="BigScreen()">&#x26F6;</a>
     </main> 
 

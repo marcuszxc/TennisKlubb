@@ -15,7 +15,8 @@ body {font-family: Verdana, sans-serif; background-color: white;}
 }
 
 .month ul li {
-  color: white;
+  /*color: white;*/
+  color: #171717;
   font-size: 20px;
   text-transform: uppercase;
   letter-spacing: 3px;
@@ -40,7 +41,8 @@ body {font-family: Verdana, sans-serif; background-color: white;}
 .weekdays li {
   display: inline-block;
   width: 13.6%;
-  color: #666;
+  /*color: #666;*/
+  color: #4D4D4D;
   text-align: center;
 }
 
@@ -57,7 +59,8 @@ body {font-family: Verdana, sans-serif; background-color: white;}
   text-align: center;
   margin-bottom: 5px;
   font-size:12px;
-  color: #777;
+  /*color: #777;*/
+  color: #4D4D4D;
 }
 
 .days li .active {

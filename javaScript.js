@@ -1,19 +1,25 @@
 var buttonToggle = true;
 
-function Test(button) {
+/*Lazy fix for media query bug*/ 
+window.matchMedia("(min-width: 280px) and (max-width: 980px)").onchange = () =>
+{
+  location.reload()
+}
+
+function IframeSwitch(button) {
   switch (button) {
     case "Hem":
       document.getElementsByTagName("iframe")[0].style.display = "none";
       document.getElementById("screenButton").style.display = "none";
       document.getElementsByTagName("h1")[0].style.display = "";
-      document.getElementsByTagName("h2")[0].style.display = "";
+      document.getElementsByTagName("h1")[1].style.display = "";
       break;
 
     case "Kalender":
       document.getElementsByTagName("iframe")[0].style.display = "";
       document.getElementById("screenButton").style.display = "unset";
       document.getElementsByTagName("h1")[0].style.display = "none";
-      document.getElementsByTagName("h2")[0].style.display = "none";
+      document.getElementsByTagName("h1")[1].style.display = "none";
       document.getElementsByTagName("iframe")[0].setAttribute("src", "Kalender/Kalender.html");
       break;
 
@@ -21,7 +27,7 @@ function Test(button) {
       document.getElementsByTagName("iframe")[0].style.display = "";
       document.getElementById("screenButton").style.display = "unset";
       document.getElementsByTagName("h1")[0].style.display = "none";
-      document.getElementsByTagName("h2")[0].style.display = "none";
+      document.getElementsByTagName("h1")[1].style.display = "none";
       document.getElementsByTagName("iframe")[0].setAttribute("src", "Info/Info.html");
       break;
 
@@ -29,7 +35,7 @@ function Test(button) {
       document.getElementsByTagName("iframe")[0].style.display = "";
       document.getElementById("screenButton").style.display = "unset";
       document.getElementsByTagName("h1")[0].style.display = "none";
-      document.getElementsByTagName("h2")[0].style.display = "none";
+      document.getElementsByTagName("h1")[1].style.display = "none";
       document.getElementsByTagName("iframe")[0].setAttribute("src", "Omklädningsrum/Omklädningsrum.html");
       break;
 
@@ -37,12 +43,13 @@ function Test(button) {
       document.getElementsByTagName("iframe")[0].style.display = "";
       document.getElementById("screenButton").style.display = "unset";
       document.getElementsByTagName("h1")[0].style.display = "none";
-      document.getElementsByTagName("h2")[0].style.display = "none";
+      document.getElementsByTagName("h1")[1].style.display = "none";
       document.getElementsByTagName("iframe")[0].setAttribute("src", "Bastu/Bastu.html");
       break;
   }
 }
 
+/*Toggles the Iframe when the button is pressed*/ 
 function BigScreen() {
 
   if (matchMedia("(min-width: 280px) and (max-width: 980px)").matches) 
